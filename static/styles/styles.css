@@ -1,0 +1,113 @@
+.user-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.prigovori-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.prigovorih1 {
+  text-align: center;
+  margin: 25px 0px;
+}
+
+.mojipodaci-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.selector {
+  width: 500px;
+}
+
+.select {
+  margin: 0px 15px;
+}
+
+.userh1 {
+  margin: 50px 0px;
+}
+
+.userbtn {
+  margin-top: 25px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.sve-prijave {
+  display: flex;
+  flex-direction: column;
+}
+
+.svi-podaci {
+  display: flex;
+  flex-direction: column;
+}
+
+.bodovi {
+  height: 38px;
+  margin-right: 17px;
+}
+
+.prijave {
+  margin: 0px -2px;
+  min-width: 180px;
+}
+
+.podaci {
+  margin: 0px -2px;
+  min-width: 120px;
+}
+
+.nav-item-style {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.navbar-nav-style {
+  margin: auto;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  flex-direction: column;
+}
+
+.pocetna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.pocetna h2 {
+  margin-bottom: 35px;
+}
+
+.link {
+  font-size: 20px;
+  margin-top: 25px;
+  color: gray;
+}
+
+.link:hover {
+  color: darkgray;
+}
+
+.unosOcjene {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

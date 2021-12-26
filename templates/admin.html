@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+    with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p>{{ msg }}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="user-wrapper">
+      <h1 class="userh1">Prijava mature</h1>
+    
+      <form action="#" method="POST">
+        <div
+          class="selector"
+          style="display: flex; flex-direction: row; margin: auto"
+        >
+          <select
+            class="form-select form-select-md mb-3 select"
+            aria-label=".form-select-lg example"
+            name="pr"
+          >
+            {%for i in predmeti%}
+            <option>{{''.join(i)}}</option>
+    
+            {%endfor%}
+          </select>
+          <select
+            class="form-select form-select-md mb-3 select"
+            aria-label=".form-select-lg example"
+            name="raz"
+          >
+            <option>A</option>
+            <option>B</option>
+            <option>izborni</option>
+          </select>
+          <select
+            class="form-select form-select-md mb-3 select"
+            aria-label=".form-select-lg example"
+            name="ro"
+          >
+            <option>ljetni rok</option>
+            <option>jesenji rok</option>
+          </select>
+        </div>
+        <input type="submit" value="Prijavi"  class="btn btn-dark btn-md userbtn"></input>
+      </form>
+    
+    </div>
+    {% endblock %}
+    

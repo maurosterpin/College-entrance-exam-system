@@ -1,0 +1,67 @@
+{% extends "base.html" %} {% block title %} Home page {% endblock %} {% block
+content %}
+<div class="pocetna">
+  <h2>Informacije o svim maturama</h2>
+</div>
+<div class="prigovori-wrapper" style="margin-bottom: 50px">
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Predmet</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{i[0]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Razina</li>
+    {%for i in predmet%} {% if ''.join(i[3]) == 'jedna_razina' %}
+    <li class="list-group-item">izborni</li>
+    {% else %}
+    <li class="list-group-item">{{' '.join(i[3])}}</li>
+    {% endif %} {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Datum ispita</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{i[1]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">
+      Vrijeme početka ispita
+    </li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{i[2]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Vrsta ispita</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{''.join(i[4])}}</li>
+
+    {%endfor%}
+  </ul>
+</div>
+<div class="pocetna">
+  <h2>Pragovi bodova</h2>
+</div>
+<div class="prigovori-wrapper" style="margin-bottom: 50px">
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Bodovi</li>
+    <li class="list-group-item">89-100</li>
+    <li class="list-group-item">75-88</li>
+    <li class="list-group-item">60-74</li>
+    <li class="list-group-item">50-59</li>
+    <li class="list-group-item">0-49</li>
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Ocjena</li>
+    <li class="list-group-item">5</li>
+    <li class="list-group-item">4</li>
+    <li class="list-group-item">3</li>
+    <li class="list-group-item">2</li>
+    <li class="list-group-item">1</li>
+  </ul>
+</div>
+{% endblock %}

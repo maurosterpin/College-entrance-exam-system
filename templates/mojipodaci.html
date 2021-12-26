@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+messages %}
+<p>{{ msg }}</p>
+{% endfor %} {% endif %} {% endwith %}
+<div class="user-wrapper">
+  <h1 class="userh1">Moji podaci</h1>
+
+  <div
+    class="svi-podaci"
+    style="display: flex; flex-direction: row; margin: auto"
+  >
+    <ul class="list-group podaci">
+      <li class="list-group-item bg-dark text-white bg-dark">Ime</li>
+      {%for i in ime%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group podaci">
+      <li class="list-group-item bg-dark text-white bg-dark">Prezime</li>
+      {%for i in prezime%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group podaci">
+      <li class="list-group-item bg-dark text-white bg-dark">Oib</li>
+      {%for i in oib%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group podaci">
+      <li class="list-group-item bg-dark text-white bg-dark">Datum rodjenja</li>
+      {%for i in datum_rodjenja%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group podaci">
+      <li class="list-group-item bg-dark text-white bg-dark">Grad</li>
+      {%for i in grad%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group podaci">
+      <li class="list-group-item bg-dark text-white bg-dark">Skola</li>
+      {%for i in skola%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+  </div>
+</div>
+{% endblock %}

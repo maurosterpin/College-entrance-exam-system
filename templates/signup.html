@@ -1,0 +1,153 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+    with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p>{{ msg }}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="user-wrapper">
+      <h1 class="userh1">Izrada računa</h1>
+    
+      <form action="#" method="POST">
+        <div class="input-group mb-3">
+         
+            <input type="text" name="ime" class="form-control" placeholder="Ime">
+          </div>
+          <div class="input-group mb-3">
+         
+            <input type="text" name="prezime" class="form-control" placeholder="Prezime">
+          </div>
+          <div class="input-group mb-3">
+         
+            <input type="text" name="oib" class="form-control" placeholder="OIB" >
+          </div>
+          <div class="input-group mb-3">
+         
+            <input type="text" name="email" class="form-control" placeholder="email">
+          </div>
+          <div class="input-group mb-3">
+         
+            <input type="text" class="form-control" placeholder="password" >
+          </div>
+        <div
+          class="selector"
+          style="display: flex; flex-direction: row; margin: auto"
+        >
+          <select
+            class="form-select form-select-md mb-3"
+            aria-label=".form-select-lg example"
+            name="spol"
+          >
+            <option>m</option>
+            <option>ž</option>
+            <option>ne želim reći</option>
+          </select>
+        </div>
+        <div
+          class="selector datum"
+          style="display: flex; flex-direction: row; margin: auto"
+        >
+        <input type="date" name="datum_rodjenja" class="form-control" style="margin-bottom: 15px;">
+          <!-- <select
+            class="form-select form-select-md mb-3"
+            aria-label=".form-select-lg example"
+            name="dan"
+            style="margin-right: 12px;"
+          >
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+            <option>04</option>
+            <option>05</option>
+            <option>06</option>
+            <option>07</option>
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+            <option>26</option>
+            <option>27</option>
+            <option>28</option>
+            <option>29</option>
+            <option>30</option>
+            <option>31</option>
+          </select>
+          <select
+            class="form-select form-select-md mb-3"
+            aria-label=".form-select-lg example"
+            name="mjesec"
+            style="margin: 0px 6px;"
+          >
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+            <option>04</option>
+            <option>05</option>
+            <option>06</option>
+            <option>07</option>
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+          </select>
+          <select
+            class="form-select form-select-md mb-3"
+            aria-label=".form-select-lg example"
+            name="godina"
+            style="margin-left: 12px;"
+          >
+         
+           {% for i in range(1990, 2005) %}
+            <option>{{i}}</option>
+            {%endfor%}
+          </select> -->
+        </div>
+          <div
+          class="selector"
+          style="display: flex; flex-direction: row; margin: auto"
+        >
+          <select
+            class="form-select form-select-md mb-3"
+            aria-label=".form-select-lg example"
+            name="grad"
+          >
+          {%for i in predmeti%}
+          <option>{{''.join(i)}}</option>
+  
+          {%endfor%}
+          </select>
+        </div>
+        <div
+        class="selector"
+        style="display: flex; flex-direction: row; margin: auto"
+      >
+        <select
+          class="form-select form-select-md mb-3"
+          aria-label=".form-select-lg example"
+          name="skola"
+        >
+        {%for i in skole%}
+        <option>{{''.join(i)}}</option>
+
+        {%endfor%}
+        </select>
+      </div>
+        <input type="submit" value="Prijavi"  class="btn btn-dark btn-md userbtn"></input>
+      </form>
+    
+    </div>
+    {% endblock %}
+    

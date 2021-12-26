@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %} Home page {% endblock %} {% block
+content %}
+<div class="pocetna">
+  <h2>Ocjenjivanje matura</h2>
+</div>
+<div class="prigovori-wrapper" style="margin-bottom: 50px">
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Id</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{i[0]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Predmet</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{''.join(i[1])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Razina</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{' '.join(i[2])}}</li>
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Ucenik</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{''.join(i[3])}} {{''.join(i[4])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">OIB</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{i[5]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Ocjena</li>
+    {%for i in predmet%} {% if i[6] %}
+    <li class="list-group-item">{{i[6]}}</li>
+    {% else %}
+    <li class="list-group-item">Nije ocjenjeno</li>
+    {% endif %} {%endfor%}
+  </ul>
+</div>
+<div class="pocetna">
+    <h2>Unos bodova</h2>
+  </div>
+<form action="#" method="POST" class="unosOcjene">
+    <div
+      class="selector"
+      style="display: flex; flex-direction: row; margin: auto"
+    >
+      <select
+        class="form-select form-select-md mb-3 select"
+        aria-label=".form-select-lg example"
+        name="id"
+      >
+        {%for i in predmet%}
+        <option>{{i[0]}}</option>
+
+        {%endfor%}
+      </select>
+      <input
+    type="text"
+    name="bod"
+    class="form-control bodovi"
+    id="usr"
+    placeholder="broj bodova"
+  />
+    </div>
+    
+    <input type="submit" value="Unesi"  class="btn btn-dark btn-md userbtn"></input>
+  </form>
+
+{% endblock %}

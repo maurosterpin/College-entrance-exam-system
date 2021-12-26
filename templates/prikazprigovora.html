@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+messages %}
+<p>{{ msg }}</p>
+{% endfor %} {% endif %} {% endwith %}
+<h1 class="prigovorih1">Prikaz prigovora</h1>
+<div class="prigovori-wrapper">
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Tema prigovora</li>
+    {%for i in tema%}
+    <li class="list-group-item">{{''.join(i)}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Prigovor</li>
+    {%for i in prigovor%}
+    <li class="list-group-item">{{''.join(i)}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Učenik</li>
+    {%for i in id_ocjena_na_maturi%}
+    <li class="list-group-item">{{' '.join(i)}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Predmet</li>
+    {%for i in predmet%}
+    <li class="list-group-item">{{' '.join(i)}}</li>
+
+    {%endfor%}
+  </ul>
+</div>
+{% endblock %}

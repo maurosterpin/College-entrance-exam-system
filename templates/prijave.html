@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+messages %}
+<p>{{ msg }}</p>
+{% endfor %} {% endif %} {% endwith %}
+<div class="user-wrapper">
+  <h1 class="userh1">Prijavljene mature</h1>
+
+  <div
+    class="sve-prijave"
+    style="display: flex; flex-direction: row; margin: auto"
+  >
+    <ul class="list-group prijave">
+      <li class="list-group-item bg-dark text-white bg-dark">Predmet</li>
+      {%for i in prijave%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group prijave">
+      <li class="list-group-item bg-dark text-white bg-dark">Razina</li>
+      {%for i in razine%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+
+    <ul class="list-group prijave">
+      <li class="list-group-item text-white bg-dark">Datum</li>
+      {%for i in datumi%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group prijave">
+      <li class="list-group-item bg-dark text-white bg-dark">Pocetak</li>
+      {%for i in pocetci%}
+      <li class="list-group-item">{{i[0]}}</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group prijave">
+      <li class="list-group-item bg-dark text-white bg-dark">
+        Duljina trajanja
+      </li>
+      {%for i in trajanja%}
+      <li class="list-group-item">{{i[0]}} minuta</li>
+
+      {%endfor%}
+    </ul>
+    <ul class="list-group prijave">
+      <li class="list-group-item bg-dark text-white bg-dark">Ocjena</li>
+      {%for i in ocjene%} {% if i[0] %}
+      <li class="list-group-item">{{i[0]}}</li>
+      {% else %}
+      <li class="list-group-item">Nije ocjenjeno</li>
+      {%endif%} {%endfor%}
+    </ul>
+  </div>
+</div>
+{% endblock %}

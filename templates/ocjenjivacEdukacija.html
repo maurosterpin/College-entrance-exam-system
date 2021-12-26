@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+messages %}
+<p>{{ msg }}</p>
+{% endfor %} {% endif %} {% endwith %}
+<h2 class="prigovorih1" style="margin: 50px 0px">Informacije o edukaciji</h2>
+<div class="prigovori-wrapper" style="margin-bottom: 50px">
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Predmet</li>
+    {%for i in edukacija%}
+    <li class="list-group-item">{{''.join(i[0])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Datum edukacije</li>
+    {%for i in edukacija%}
+    <li class="list-group-item">{{i[1]}}</li>
+
+    {%endfor%}
+  </ul>
+</div>
+<h3 class="prigovorih1" style="margin: 50px 0px">Link edukacije</h3>
+<div class="prigovori-wrapper" style="margin-bottom: 50px">
+  <ul class="list-group podaci">
+    <li class="list-group-item">
+      <a href="https://us02web.zoom.us/">https://us02web.zoom.us/</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}

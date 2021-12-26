@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content %} {%
+    with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p>{{ msg }}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="user-wrapper">
+      <h1 class="userh1">Prigovor</h1>
+    
+      <form action="#" method="POST">
+        <div
+          class="selector"
+          style="display: flex; flex-direction: row; margin: auto"
+        >
+        </div>
+        <div class="input-group mb-3">
+         
+            <input type="text" name="txt" class="form-control" placeholder="Tema prigovora" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+        <div class="input-group">
+            <textarea class="form-control" name="txt2" placeholder="Opis prigovora" aria-label="With textarea"></textarea>
+          </div>
+          <select
+        class="form-select form-select-md mb-3"
+        aria-label=".form-select-lg example"
+        style="margin-top: 15px;"
+        name="pr"
+      >
+        {%for i in predmeti%}
+        <option>{{''.join(i)}}</option>
+
+        {%endfor%}
+      </select>
+        <input type="submit" value="Posalji"  class="btn btn-dark btn-md userbtn"></input>
+      </form>
+    
+    </div>
+    {% endblock %}
+    
