@@ -45,8 +45,8 @@
           class="selector datum"
           style="display: flex; flex-direction: row; margin: auto"
         >
-        <input type="date" name="datum_rodjenja" class="form-control" style="margin-bottom: 15px;">
-          <!-- <select
+        
+          <select
             class="form-select form-select-md mb-3"
             aria-label=".form-select-lg example"
             name="dan"
@@ -110,10 +110,10 @@
             style="margin-left: 12px;"
           >
          
-           {% for i in range(1990, 2005) %}
+           {% for i in range(1995, 2005) %}
             <option>{{i}}</option>
             {%endfor%}
-          </select> -->
+          </select>
         </div>
           <div
           class="selector"
@@ -145,7 +145,7 @@
         {%endfor%}
         </select>
       </div>
-        <input type="submit" value="Prijavi"  class="btn btn-dark btn-md userbtn"></input>
+        <input type="submit" value="Prijavi" class="btn btn-dark btn-md userbtn"></input>
       </form>
     
     </div>

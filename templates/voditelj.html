@@ -1,6 +1,57 @@
 {% extends "base.html" %} {% block title %} Home page {% endblock %} {% block
 content %}
 <div class="pocetna">
-  <h2>Vođenje mature</h2>
+  <h2>Informacije o vođenju mature</h2>
+</div>
+<div class="prigovori-wrapper">
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Predmet</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{''.join(i[0])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Razina</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{''.join(i[1])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Škola</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{''.join(i[2])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Grad</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{''.join(i[3])}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Datum</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{i[4]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Vrijeme početka</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{i[5]}}</li>
+
+    {%endfor%}
+  </ul>
+  <ul class="list-group podaci">
+    <li class="list-group-item bg-dark text-white bg-dark">Duljina trajanja</li>
+    {%for i in matura%}
+    <li class="list-group-item">{{i[6]}} minuta</li>
+
+    {%endfor%}
+  </ul>
 </div>
 {% endblock %}

@@ -90,14 +90,16 @@ def signup():
         oib = request.form["oib"]
         email = request.form["email"]
         spol = request.form["spol"]
-        datum_rodjenja = request.form["datum_rodjenja"]
+        dan = request.form["dan"]
+        mjesec = request.form["mjesec"]
+        godina = request.form["godina"]
         grad = request.form["grad"]
         skola = request.form["skola"]
         cur4.execute("SELECT id FROM grad WHERE naziv = '"+grad+"'")
         id_grad = cur4.fetchall()
         cur5.execute("SELECT id FROM skola WHERE naziv = '"+skola+"'")
         id_skola = cur5.fetchall()
-        cur.execute("INSERT INTO ucenik (ime, prezime, oib, datum_rodjenja, spol, id_grad, id_skola, email) VALUES (%s, %s, %s, STR_TO_DATE('02.03.2003.', '%d.%m.%Y.'), %s, %s, %s, %s)", (ime,prezime,oib,spol,str(sum(id_grad[0])),str(sum(id_skola[0])),email))
+        cur.execute("INSERT INTO ucenik (ime, prezime, oib, datum_rodjenja, spol, id_grad, id_skola, email) VALUES (%s, %s, %s, STR_TO_DATE('"+dan+"."+mjesec+"."+godina+".', '%d.%m.%Y.'), %s, %s, %s, %s)", (ime,prezime,oib,spol,str(sum(id_grad[0])),str(sum(id_skola[0])),email))
         flash("Račun izrađen")
         return render_template("signup.html", predmeti=predmeti, skole=skole)
     else:
@@ -193,32 +195,11 @@ def ocjenjivacEdukacija():
 @app.route("/voditelj", methods=["POST", "GET"])
 def voditelj():
     cur = db.cursor()
-    cur2 = db.cursor()
-    cur3 = db.cursor()
-    cur4 = db.cursor()
-    cur.execute("SELECT naziv FROM predmet")
-    predmeti = cur.fetchall()
+    cur.execute("SELECT predmet.naziv, razina.naziv, skola.naziv, grad.naziv, datum_ispita, pocetak, duljina_trajanja FROM voditelj INNER JOIN matura ON matura.id = id_matura INNER JOIN predmet ON predmet.id = id_predmet INNER JOIN skola ON skola.id = id_skola INNER JOIN grad ON grad.id = id_grad INNER JOIN razina ON id_razina = razina.id INNER JOIN termin_ispita ON termin_ispita.id = id_termin_ispita INNER JOIN vrijeme ON vrijeme.id = id_vrijeme WHERE voditelj.id ="+session["user"])
+    matura = cur.fetchall()
     email = None
     if "user" in session:
-        if request.method == "POST":
-            predmet = request.form['pr']
-            razina = request.form['raz']
-            if(razina == 'izborni'):
-                razina = 'jedna_razina'
-            rok = request.form['ro']
-            rezultati2 = cur3.execute("SELECT matura.id FROM matura INNER JOIN predmet ON predmet.id = id_predmet INNER JOIN razina ON razina.id = id_razina INNER JOIN termin_ispita ON termin_ispita.id = id_termin_ispita WHERE predmet.naziv ='" + predmet + "' AND razina.naziv ='"+razina+ "' AND termin_ispita.vrsta_roka ='"+rok+"'")
-            id_matura = cur3.fetchall()
-            rezultati3 = cur4.execute("SELECT predmet.naziv FROM ocjena_na_maturi INNER JOIN matura ON matura.id = id_matura INNER JOIN predmet ON predmet.id = id_predmet WHERE id_ucenik = '"+session["user"]+"' AND predmet.naziv = '"+predmet+"'")
-            matura_vec_postoji = cur4.fetchall()
-            if(matura_vec_postoji):
-                flash("Predmet je vec prijavljen")
-            else:
-                cur2.execute("INSERT INTO ocjena_na_maturi (id_matura, id_ucenik) VALUES (%s, %s)", (sum(id_matura[0]), session["user"]))
-                flash("Predmet je prijavljen")
-        else:
-            if "email" in session:
-                email = session["email"]
-        return render_template("voditelj.html", email=email, predmeti=predmeti)
+        return render_template("voditelj.html", email=email, matura=matura)
     else:
         flash("You are not logged in!")
         return redirect(url_for("login"))
